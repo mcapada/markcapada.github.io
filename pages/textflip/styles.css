@@ -1,0 +1,193 @@
+body {
+    color: black;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    background-color:#ededed;
+    font-size: 17;
+    text-transform: uppercase;
+}
+
+.topnav {
+    background-color: rgb(95, 95, 95);
+    overflow: hidden;
+}
+  
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+}
+  
+.topnav a:hover {
+    color: black;
+}
+  
+.highlight {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.topnav c {
+    color: white;
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 18px;
+}
+    
+#originaltext{
+    font-size: 18px;
+    width: 80%;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    resize: none;
+    text-align: center;
+}
+
+.button {
+    background-color: rgb(76, 175, 101); 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 auto;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: rgb(76, 127, 175);
+}
+
+.button3 {
+    background-color: rgb(76, 144, 175); 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 auto;
+}
+
+.button3:hover { 
+    cursor: pointer;
+    background-color: rgb(158, 76, 175);
+}
+
+#changedtext{
+    font-size: 18px;
+    width: 80%;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    resize: none;
+    text-align: center;
+}
+
+.instructions{
+    background-color: rgba(175, 226, 174, 0.274);
+    overflow: hidden;
+    color: #000000;
+    text-align: center;
+    padding: 3px 12px;
+    margin-right: 50px;
+    margin-left: 50px;
+    border-radius: 25px;
+    border: 2px solid rgb(95, 95, 95);
+    font-size: 14px;
+}
+
+#centerbutton {
+    text-align: center;
+}
+
+.button2 {
+    background-color: rgba(175, 226, 174, 0.575); 
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 5;
+    height: 200px;
+    width: 200px;
+    font-size: 16px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+}
+
+.button2:hover {
+    cursor: pointer;
+    background-color: rgb(113, 204, 125);
+}
+
+.botnav {
+    background-color: rgb(95, 95, 95);
+    overflow: hidden;
+    position: fixed;
+    bottom: 0px;
+    margin: 0px;
+    width: 100%;
+    display: inline-block;
+}
+  
+.botnav a {
+    float: center;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    margin: 0px;
+    text-decoration: none;
+    font-size: 18px;
+    width: 100%;
+}
+  
+.botnav a:hover {
+    color: black;
+    margin: 0px;
+    width: 100%;
+}
+
+body{
+    margin: 0px;
+}
+
+.instructions2{
+    background-color: rgba(175, 226, 174, 0.274);
+    overflow: hidden;
+    color: #000000;
+    text-align: center;
+    padding: 3px 12px;
+    margin-right: 50px;
+    margin-left: 50px;
+    border-radius: 25px;
+    border: 2px solid rgb(95, 95, 95);
+    font-size: 17px;
+}
+
+.code {
+    border: 1.5px solid rgb(0, 0, 0) ;
+    font-size: 11px;
+    text-transform: none;
+    width: 90%;
+    margin: auto;
+    font-family: Consolas, monaco, monospace;
+    background-color:rgba(219, 204, 247, 0.562);
+    border-radius: 10px;
+  }
