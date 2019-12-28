@@ -74,13 +74,19 @@ hr {
     border-radius: 25px;
 }
 
+.longer {
+    border: 0.3vw solid black;
+    width: 100%;
+    border-radius: 25px;
+}
+
 h3 {
     text-shadow: .1rem .1rem .8rem black;
 }
 
 .fa {
     font-size: 40px;
-    width: 57px;
+    width: 80px;
     text-align: center;
     text-decoration: none;
     border-radius: 50%;
@@ -213,4 +219,53 @@ img {
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
   }
+
+  .gradient-text-purple {
+    background: -webkit-linear-gradient(left, #4568dc  , #b06ab3);
+    background: -o-linear-gradient(right, #4568dc, #b06ab3);
+    background: -moz-linear-gradient(right, #4568dc, #b06ab3);
+    background: linear-gradient(to right, #4568dc, #b06ab3); 
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   opacity: 90%;
+  }
   
+  .gradient-text-royal {
+    background: -webkit-linear-gradient(left, #4568dc , #141e30);
+    background: -o-linear-gradient(right, #4568dc, #141e30);
+    background: -moz-linear-gradient(right,#4568dc, #141e30);
+    background: linear-gradient(to right, #4568dc, #141e30); 
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   opacity: 90%;
+  }
+
+  .gradient-text-choco {
+    background: -webkit-linear-gradient(left, #1e130c , #9a8478);
+    background: -o-linear-gradient(right, #1e130c, #9a8478);
+    background: -moz-linear-gradient(right,#1e130c, #9a8478);
+    background: linear-gradient(to right, #1e130c, #9a8478); 
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   opacity: 90%;
+  }
+
+  .gradient-text-clouds{
+    background: -webkit-linear-gradient(left, #606c88, #3f4c6b);
+    background: -o-linear-gradient(right, #606c88, #3f4c6b);
+    background: -moz-linear-gradient(right,#606c88, #3f4c6b);
+    background: linear-gradient(to right, #606c88, #3f4c6b); 
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   opacity: 90%;
+  }
+
+  .gradient-text-h1{
+    background: -webkit-linear-gradient(left, #E6DADA, #274046);
+    background: -o-linear-gradient(right, #E6DADA, #274046);
+    background: -moz-linear-gradient(right,#E6DADA, #274046);
+    background: linear-gradient(to right, #E6DADA, #274046); 
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   opacity: 90%;
+  }
