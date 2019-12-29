@@ -162,6 +162,10 @@ h3 {
     margin: 0 auto;
 }
 
+#demo2 {
+    margin: 0 auto;
+}
+
 img {
     width: 100%;
 }
@@ -270,8 +274,25 @@ img {
    opacity: 90%;
   }
 
+  .gradient-text-green{
+    background: -webkit-linear-gradient(left, rgb(49, 138, 150), #1c530b);
+    background: -o-linear-gradient(right, rgb(49, 138, 150),  #1c530b);
+    background: -moz-linear-gradient(right,rgb(49, 138, 150),  #1c530b);
+    background: linear-gradient(to right, rgb(49, 138, 150),  #1c530b); 
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   opacity: 90%;
+  }
+
   :root{
     scrollbar-color: #85b43d #2c3e50;
     scrollbar-width: thin;
 
+  }
+
+  @media screen and (max-width: 800px) {
+    #title_message {
+      visibility: hidden;
+      height: 0px;
+    }
   }
