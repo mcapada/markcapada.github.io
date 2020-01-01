@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
 
 body {
     overflow-x: hidden;
@@ -84,6 +86,7 @@ h3 {
     text-shadow: .1rem .1rem .8rem black;
 }
 
+
 .fa {
     font-size: 40px;
     width: 80px;
@@ -163,6 +166,10 @@ h3 {
 }
 
 #demo2 {
+    margin: 0 auto;
+}
+
+#demo3 {
     margin: 0 auto;
 }
 
@@ -296,3 +303,23 @@ img {
       height: 0px;
     }
   }
+
+  .light {
+    font-family: 'Nunito', sans-serif;
+    text-shadow: none;
+    opacity: 70%;
+}
+
+.leftcolumn {
+    font-size: 30px;
+}
+
+.rightcolumn {
+    text-align: left;
+}
+
+.smallcol{
+    border: 0.2vw solid black;
+    width: 100%;
+    border-radius: 25px;
+}
