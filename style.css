@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
 
-
 body {
     overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
@@ -86,7 +85,6 @@ h3 {
     text-shadow: .1rem .1rem .8rem black;
 }
 
-
 .fa {
     font-size: 40px;
     width: 80px;
@@ -140,6 +138,11 @@ h3 {
 .col-sm-6{
     text-align: center;
     margin: 0 auto;
+}
+
+.nopadding{
+    padding-right:0.3%;
+    padding-left:0.3%;
 }
 
 .imageheader {
@@ -197,41 +200,41 @@ img {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
+}
   
   /* Modal Content/Box */
-  .modal-content {
+.modal-content {
     position: relative;
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
-  }
+}
   
   /* The Close Button */
-  .close {
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
+}
   
-  .close:hover,
-  .close:focus {
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
 
-  .nonselect {
+.nonselect {
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
-  }
+}
 
-  .gradient-text-purple {
+.gradient-text-purple {
     background: -webkit-linear-gradient(left, #4568dc  , #b06ab3);
     background: -o-linear-gradient(right, #4568dc, #b06ab3);
     background: -moz-linear-gradient(right, #4568dc, #b06ab3);
@@ -239,9 +242,9 @@ img {
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
    opacity: 90%;
-  }
+}
   
-  .gradient-text-royal {
+.gradient-text-royal {
     background: -webkit-linear-gradient(left, #4568dc , #141e30);
     background: -o-linear-gradient(right, #4568dc, #141e30);
     background: -moz-linear-gradient(right,#4568dc, #141e30);
@@ -249,9 +252,9 @@ img {
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
    opacity: 90%;
-  }
+}
 
-  .gradient-text-choco {
+.gradient-text-choco {
     background: -webkit-linear-gradient(left, #1e130c , #9a8478);
     background: -o-linear-gradient(right, #1e130c, #9a8478);
     background: -moz-linear-gradient(right,#1e130c, #9a8478);
@@ -259,9 +262,9 @@ img {
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
    opacity: 90%;
-  }
+}
 
-  .gradient-text-clouds{
+.gradient-text-clouds{
     background: -webkit-linear-gradient(left, #606c88, #3f4c6b);
     background: -o-linear-gradient(right, #606c88, #3f4c6b);
     background: -moz-linear-gradient(right,#606c88, #3f4c6b);
@@ -269,9 +272,9 @@ img {
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
    opacity: 90%;
-  }
+}
 
-  .gradient-text-h1{
+.gradient-text-h1{
     background: -webkit-linear-gradient(left, #E6DADA, #274046);
     background: -o-linear-gradient(right, #E6DADA, #274046);
     background: -moz-linear-gradient(right,#E6DADA, #274046);
@@ -279,9 +282,9 @@ img {
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
    opacity: 90%;
-  }
+}
 
-  .gradient-text-green{
+.gradient-text-green{
     background: -webkit-linear-gradient(left, rgb(49, 138, 150), #1c530b);
     background: -o-linear-gradient(right, rgb(49, 138, 150),  #1c530b);
     background: -moz-linear-gradient(right,rgb(49, 138, 150),  #1c530b);
@@ -289,22 +292,28 @@ img {
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
    opacity: 90%;
-  }
+}
 
-  :root{
+:root{
     scrollbar-color: #85b43d #2c3e50;
     scrollbar-width: thin;
+}
 
-  }
-
-  @media screen and (max-width: 800px) {
+@media screen and (max-width: 800px) {
     #title_message {
       visibility: hidden;
       height: 0px;
     }
-  }
+}
 
-  .light {
+@media screen and (max-width: 570px) {
+    #title_message2 {
+      visibility: hidden;
+      height: 0px;
+    }
+}
+
+.light {
     font-family: 'Nunito', sans-serif;
     text-shadow: none;
     opacity: 70%;
