@@ -217,3 +217,8 @@ div.test:hover {
     -webkit-transition:.3s;
     transition:.3s;
 }
+
+.box {
+    border: 1px solid rgb(88, 88, 88);
+}
+
