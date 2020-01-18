@@ -227,3 +227,28 @@ div.test:hover {
     -webkit-box-shadow: 0 0 25px rgb(90, 90, 90);
     box-shadow: 0 0 25px rgb(90, 90, 90);
 }
+
+.darkblue {
+    color: rgb(37, 46, 172);
+}
+
+.darkgreen {
+    color: rgb(10, 59, 21);
+}
+
+.darkred {
+    color: rgb(87, 7, 7);
+}
+
+.texting:hover
+{
+  -moz-box-shadow: 0 0 25px rgb(90, 90, 90);
+  -webkit-box-shadow: 0 0 25px rgb(90, 90, 90);
+  box-shadow: 0 0 25px rgb(90, 90, 90);
+  transform: translateY(-10px);
+  -o-transition:.3s;
+  -ms-transition:.3s;
+  -moz-transition:.3s;
+  -webkit-transition:.3s;
+  transition:.3s;
+}
