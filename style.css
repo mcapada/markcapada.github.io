@@ -193,9 +193,25 @@ ul {
     border-bottom: 1px solid rgb(88, 88, 88);
 }
 
+.test2 {
+    border-bottom: 1px solid rgb(88, 88, 88);
+    border-right: 1px solid rgb(88, 88, 88);
+    border-left: 1px solid rgb(88, 88, 88);
+}
+
 div.test:hover {
     background-color: rgba(167, 39, 167, 0.623);
     color: white;
+    -o-transition:.3s;
+    -ms-transition:.3s;
+    -moz-transition:.3s;
+    -webkit-transition:.3s;
+    transition:.3s;
+    cursor: pointer;
+}
+
+div.test2:hover {
+    color: rgb(0, 0, 0);
     -o-transition:.3s;
     -ms-transition:.3s;
     -moz-transition:.3s;
@@ -264,3 +280,8 @@ div.test:hover {
   -webkit-transition:.3s;
   transition:.3s;
 }
+
+iframe {
+    display: block;
+    margin: 0 auto;
+ }
