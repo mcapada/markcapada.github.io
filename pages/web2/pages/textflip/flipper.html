@@ -1,0 +1,123 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="styles.css">
+
+<title> Text Flipper</title>
+
+<div class="topnav" id="myTopnav">
+    <a href="../../index.html" class="highlight">Mark Capada</a>
+    <c href="#home" class="active">Text Flipper</c>
+
+</div>
+<p></p>
+<div class="instructions" id="bar">
+    <b>Note: words are converted to lowercase<br></b>
+    Enter text, hit the button, copy/paste, repeat!
+</div>
+<p></p>
+<textarea maxlength="50" id="originaltext"
+    placeholder="Enter your text here. Do not include symbols. Only A-Z / 0-9"></textarea>
+<p></p>
+<p></p>
+<div id="centerbutton">
+    <input onclick="flip()" type="submit" name="submit" class="button" value="Reverse" id="click" />
+    <input onclick="upsidedown()" type="submit" name="submit2" class="button" value="Upsidedown" id="click2" />
+</div>
+<p></p>
+<p></p>
+<textarea readonly id="changedtext" placeholder="Your flipped text will go here"></textarea>
+<p></p>
+
+<script type="text/javascript">
+    function flip() {
+        // 123 turns into 321
+        var x = document.getElementById("originaltext").value;
+        var n = x.length;
+        var array = x.split("");
+        var newstr = array.reverse();
+        var concat = newstr.join("");
+        document.getElementById("changedtext").innerText = concat;
+    }
+    function upsidedown() {
+        var x = document.getElementById("originaltext").value;
+        var n = x.length;
+        var array = x.split("");
+
+        for (var i = 0; i < (n + 1); i++) {
+            if (array[i] == "a") { array[i] = "ɐ"; }
+            else if (array[i] == "b") { array[i] = "q"; }
+            else if (array[i] == "c") { array[i] = "ɔ"; }
+            else if (array[i] == "d") { array[i] = "p"; }
+            else if (array[i] == "e") { array[i] = "ǝ"; }
+            else if (array[i] == "f") { array[i] = "ɟ"; }
+            else if (array[i] == "g") { array[i] = "ƃ"; }
+            else if (array[i] == "h") { array[i] = "ɥ"; }
+            else if (array[i] == "i") { array[i] = "ᴉ"; }
+            else if (array[i] == "j") { array[i] = "ɾ"; }
+            else if (array[i] == "k") { array[i] = "ʞ"; }
+            else if (array[i] == "l") { array[i] = "l"; }
+            else if (array[i] == "m") { array[i] = "ɯ"; }
+            else if (array[i] == "n") { array[i] = "u"; }
+            else if (array[i] == "o") { array[i] = "o"; }
+            else if (array[i] == "p") { array[i] = "d"; }
+            else if (array[i] == "q") { array[i] = "b"; }
+            else if (array[i] == "r") { array[i] = "ɹ"; }
+            else if (array[i] == "s") { array[i] = "s"; }
+            else if (array[i] == "t") { array[i] = "ʇ"; }
+            else if (array[i] == "u") { array[i] = "n"; }
+            else if (array[i] == "v") { array[i] = "ʌ"; }
+            else if (array[i] == "w") { array[i] = "ʍ"; }
+            else if (array[i] == "x") { array[i] = "x"; }
+            else if (array[i] == "y") { array[i] = "ʎ"; }
+            else if (array[i] == "z") { array[i] = "z"; }
+            else if (array[i] == "A") { array[i] = "ɐ"; }
+            else if (array[i] == "B") { array[i] = "q"; }
+            else if (array[i] == "C") { array[i] = "ɔ"; }
+            else if (array[i] == "D") { array[i] = "p"; }
+            else if (array[i] == "E") { array[i] = "ǝ"; }
+            else if (array[i] == "F") { array[i] = "ɟ"; }
+            else if (array[i] == "G") { array[i] = "ƃ"; }
+            else if (array[i] == "H") { array[i] = "ɥ"; }
+            else if (array[i] == "H") { array[i] = "ᴉ"; }
+            else if (array[i] == "J") { array[i] = "ɾ"; }
+            else if (array[i] == "K") { array[i] = "ʞ"; }
+            else if (array[i] == "L") { array[i] = "l"; }
+            else if (array[i] == "M") { array[i] = "ɯ"; }
+            else if (array[i] == "N") { array[i] = "u"; }
+            else if (array[i] == "O") { array[i] = "o"; }
+            else if (array[i] == "P") { array[i] = "d"; }
+            else if (array[i] == "Q") { array[i] = "b"; }
+            else if (array[i] == "R") { array[i] = "ɹ"; }
+            else if (array[i] == "S") { array[i] = "s"; }
+            else if (array[i] == "T") { array[i] = "ʇ"; }
+            else if (array[i] == "U") { array[i] = "n"; }
+            else if (array[i] == "V") { array[i] = "ʌ"; }
+            else if (array[i] == "W") { array[i] = "ʍ"; }
+            else if (array[i] == "X") { array[i] = "x"; }
+            else if (array[i] == "Y") { array[i] = "ʎ"; }
+            else if (array[i] == "Z") { array[i] = "z"; }
+        }
+        array2 = array.reverse();
+        var concat = array2.join("");
+        document.getElementById("changedtext").innerText = concat;
+    }
+    function scramble() {
+        var x = document.getElementById("originaltext").value;
+        var n = x.length;
+        var array = x.split("");
+        var newstr = array.reverse();
+        var concat = newstr.join("");
+        document.getElementById("changedtext").innerText = concat;
+    }
+</script>
+
+</html>
+
+
+<!--Next steps:
+
+Code functionality: 
+    1. Add scrambled text
+    2. Link Contact Me Button
+
+-->
