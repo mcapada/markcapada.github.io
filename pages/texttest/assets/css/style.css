@@ -1,0 +1,157 @@
+
+/* General */
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #272829;
+}
+
+a {
+  color: #1454dd;
+}
+
+a:hover {
+  color: #3786ed;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+.rounded-corner {
+  border-radius: 15px;
+}
+
+.shadowtext {
+  text-shadow: 1px 1px 30px rgb(0, 0, 0);
+}
+
+.greytext {
+  color: #888888;
+}
+
+
+
+/* General Sections  */
+
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background: #f5f8fd;
+}
+
+.section-title {
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #173b6c;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #149ddd;
+  bottom: 0;
+  left: 0;
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+
+/* About */
+
+.about .content h3 {
+  font-weight: 700;
+  font-size: 26px;
+  color: #173b6c;
+}
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  padding-bottom: 10px;
+}
+
+.about .content ul i {
+  font-size: 20px;
+  padding-right: 2px;
+  color: #149ddd;
+}
+
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.speechbubble {
+  width: 300px;
+  margin: 20px auto;
+  border-radius: 15px;
+  background: #00bfb6;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  position: relative;
+}
+
+.speechbubble2 {
+  width: 300px;
+  margin: 20px auto;
+  border-radius: 15px;
+  background: #c5c5c5;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  position: relative;
+}
+
+/* speech bubble 13 */
+
+.sbright:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid #c5c5c5;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #c5c5c5;
+  border-bottom: 15px solid transparent;
+  right: -16px;
+  top: 0px;
+}
+
+
+/* speech bubble 14 */
+
+.sbleft:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid #00bfb6;
+  border-top: 15px solid #00bfb6;
+  border-bottom: 15px solid transparent;
+  left: -16px;
+  top: 0px;
+}
