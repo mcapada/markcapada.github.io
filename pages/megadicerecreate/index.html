@@ -1,0 +1,250 @@
+<html>
+
+<body>
+
+    <h1>DegaMice </h1>
+    <p>Recreation of Ontario's Lottery Game, MegaDice.</p>
+
+    <p>> Functionality is complete. Frontend will be coming soon</p>
+
+    <button onClick="window.location.reload();"> Reroll </button>
+
+    <p id="displayWinningNumbers"></p>
+
+    <p id="IsJackpot"></p>
+    <p id="Is7OAK"></p>
+    <p id="Is6OAK"></p>
+    <p id="Is5OAK"></p>
+    <p id="Is4OAK"></p>
+    <p id="Is3OAK"></p>
+    <p id="Is43OAK"></p>
+    <p id="Is23OAK"></p>
+    <p id="Is32OAK"></p>
+    <p id="straight"></p>
+    <p id="loss"></p>
+
+    <!-- Debugging Duplicate Numbers
+    <p id="COUNTONES"></p>
+    <p id="COUNTTWOS"></p>
+    <p id="COUNTTHREES"></p>
+    <p id="COUNTFOURS"></p>
+    <p id="COUNTFIVES"></p>
+    <p id="COUNTSIXES"></p>
+
+    <p id="dupe3"></p>
+    <p id="dupe2"></p> 
+
+    <p id="has1"></p>
+    <p id="has2"></p>
+    <p id="has3"></p>
+    <p id="has4"></p>
+    <p id="has5"></p>
+    <p id="has6"></p>-->
+
+    <script>
+
+        /* Stats to cover
+            - 7 ones 
+            - 7 of a kind 
+            - 6 of a kind 
+            - 4 of a kind + 3 of a kind 
+            - 5 of a kind 
+            - 3 of a kind + 3 of a kind
+            - 3 of a kind + 2 pairs
+            - straight
+            - 4 of a kind 
+        https://www.olg.ca/en/lottery/play-megadice-lotto/odds-and-payouts.html#content
+        */
+
+        // Declaring counter to count duplicate die faces
+        var count1 = 0;
+        var count2 = 0;
+        var count3 = 0;
+        var count4 = 0;
+        var count5 = 0;
+        var count6 = 0;
+
+        // Declaring counter as false unless winning condition is met
+        var Is7Ones = false; // Seven 1s (Jackpot)
+        var Is7OAK = false; // Seven of a kind (excluding 7)
+        var Is6OAK = false; // Six of a kind
+        var Is5OAK = false; // Five of a kind
+        var Is4OAK = false; // Four of a kind
+        var Is3OAK = false; // Basic three of a kind checker
+        var Is43OAK = false; // Three of a kind
+        var Is23OAK = false; // Two triples
+        var Is32OAK = false; // One triple + 2 Pairs
+
+
+        // Creating a sorted array with 6 integers (replicating 6 die) with ints between 1 and 6. 
+        var winningNums = [
+            temp1 = Math.floor(Math.random() * 6) + 1,
+            temp2 = Math.floor(Math.random() * 6) + 1,
+            temp3 = Math.floor(Math.random() * 6) + 1,
+            temp4 = Math.floor(Math.random() * 6) + 1,
+            temp5 = Math.floor(Math.random() * 6) + 1,
+            temp6 = Math.floor(Math.random() * 6) + 1,
+            temp7 = Math.floor(Math.random() * 6) + 1
+        ].sort(function (a, b) {
+            return a - b;
+        });
+
+        /* Testing Numbers 
+        var winningNums = [
+            temp1 = 6,
+            temp2 = 6,
+            temp3 = 6,
+            temp4 = 6,
+            temp5 = 4,
+            temp6 = 4,
+            temp7 = 4
+        ]; */
+
+        // Declaring variables to check if there is a straight
+        var has1 = false;
+        var has2 = false;
+        var has3 = false;
+        var has4 = false;
+        var has5 = false;
+        var has6 = false;
+        var straight = false;
+
+        // Counting number of duplicates
+        for (var eachArray in winningNums) {
+            if (winningNums[eachArray] == 1) {
+                count1 += 1;
+                has1 = true;
+            }
+            else if (winningNums[eachArray] == 2) {
+                count2 += 1;
+                has2 = true;
+            }
+            else if (winningNums[eachArray] == 3) {
+                count3 += 1;
+                has3 = true;
+            }
+            else if (winningNums[eachArray] == 4) {
+                count4 += 1;
+                has4 = true;
+            }
+            else if (winningNums[eachArray] == 5) {
+                count5 += 1;
+                has5 = true;
+            }
+            else if (winningNums[eachArray] == 6) {
+                count6 += 1;
+                has6 = true;
+            }
+        }
+
+        var duplicates = [
+            count1,
+            count2,
+            count3,
+            count4,
+            count5,
+            count6
+        ];
+
+        var duplicatesOf3 = 0;
+        var duplicatesOf2 = 0;
+
+        for (var eachDupe in duplicates) {
+            if (duplicates[eachDupe] == 3) {
+                duplicatesOf3 += 1;
+            }
+            else if (duplicates[eachDupe] == 2) {
+                duplicatesOf2 += 1;
+            }
+        }
+
+        // All 7 die faces are 1 (Jackpot)
+        if (count1 == 7) {
+            Is7Ones = true;
+            document.getElementById("IsJackpot").innerHTML = "WINNER!! Jackpot!!";
+        }
+        // All 7 die faces are the same number excluding the number 1
+        else if ((count2 == 7) || (count3 == 7) || (count4 == 7) ||
+            (count5 == 7) || (count6 == 7)) {
+            Is7OAK = true;
+            document.getElementById("Is7OAK").innerHTML = "WINNER! 7 of a kind!";
+        }
+        // 6 die faces are the same 
+        else if ((count1 == 6) || (count2 == 6) || (count3 == 6) || (count4 == 6) ||
+            (count5 == 6) || (count6 == 6)) {
+            Is6OAK = true;
+            document.getElementById("Is6OAK").innerHTML = "WINNER! 6 of a kind!";
+        }
+        // 5 die faces are the same 
+        else if ((count1 == 5) || (count2 == 5) || (count3 == 5) || (count4 == 5) ||
+            (count5 == 5) || (count6 == 5)) {
+            Is5OAK = true;
+            document.getElementById("Is5OAK").innerHTML = "WINNER! 5 of a kind!";
+        }
+        // Checks if the 4+3 combination is there or simply 4 of a kind. 
+        else if ((count1 == 4) || (count2 == 4) || (count3 == 4) || (count4 == 4) ||
+            (count5 == 4) || (count6 == 4)) {
+
+            if ((count1 == 3) || (count2 == 3) || (count3 == 3) || (count4 == 3) ||
+                (count5 == 3) || (count6 == 3)) {
+
+                Is3OAK = true;
+
+            }
+
+            Is4OAK = true;
+
+            if ((Is4OAK == true) && (Is3OAK == true)) {
+                Is4OAK = false;
+                Is3OAK = false;
+                Is43OAK = true;
+                document.getElementById("Is43OAK").innerHTML = "WINNER! 4 of a kind + triple!";
+            }
+            else { document.getElementById("Is4OAK").innerHTML = "WINNER! 4 of a kind!"; }
+
+        }
+        // Checks if there are two triples
+        else if (duplicatesOf3 == 2) {
+            Is23OAK = true;
+            document.getElementById("Is23OAK").innerHTML = "WINNER! Two triples!";
+        }
+        // Checks if there are two doubles and a triple
+        else if ((duplicatesOf3 == 1) && (duplicatesOf2 == 2)) {
+            Is32OAK = true;
+            document.getElementById("Is32OAK").innerHTML = "WINNER! One triple + 2 pairs!";
+        }
+        // Checks for a straight
+        else if (((has1 == true) && (has2 == true) && (has3 == true) && (has4 == true) &&
+            (has5 == true)) || ((has2 == true) && (has3 == true) && (has4 == true) &&
+                (has5 == true) && (has6 == true))) {
+            straight = true;
+            document.getElementById("straight").innerHTML = "WINNER! Straight!";
+        }
+        else { document.getElementById("loss").innerHTML = "LOSER!"; }
+
+
+        document.getElementById("displayWinningNumbers").innerHTML = winningNums;
+
+        /* Debugging duplicates
+        document.getElementById("dupe3").innerHTML = "There are " + duplicatesOf3 + " duplicates of 3";
+        document.getElementById("dupe2").innerHTML = "There are " + duplicatesOf2 + " duplicates of 2";
+        
+        document.getElementById("COUNTONES").innerHTML = "There are " + count1 + " ones";
+        document.getElementById("COUNTTWOS").innerHTML = "There are " + count2 + " twos";
+        document.getElementById("COUNTTHREES").innerHTML = "There are " + count3 + " threes";
+        document.getElementById("COUNTFOURS").innerHTML = "There are " + count4 + " fours";
+        document.getElementById("COUNTFIVES").innerHTML = "There are " + count5 + " fives";
+        document.getElementById("COUNTSIXES").innerHTML = "There are " + count6 + " sixes"; 
+
+        document.getElementById("has1").innerHTML = "One included - " + has1;
+        document.getElementById("has2").innerHTML = "Two included - " + has2;
+        document.getElementById("has3").innerHTML = "Three included - " + has3;
+        document.getElementById("has4").innerHTML = "Four included - " + has4;
+        document.getElementById("has5").innerHTML = "Five included - " + has5;
+        document.getElementById("has6").innerHTML = "Six included - " + has6; */
+
+    </script>
+
+</body>
+
+</html>
