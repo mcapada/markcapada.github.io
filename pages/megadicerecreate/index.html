@@ -1,15 +1,124 @@
 <html>
 
-<body>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      
+    <title>Mark Angelo Capada</title>
+    <meta content="" name="descriptison">
+        <meta content="" name="keywords">
+      
+        <!-- Favicons -->
+        <link href="assets/img/main/favicon2.jpg" rel="icon">
+        <link href="assets/img/main/favicon2.jpg" rel="apple-touch-icon">
+      
+        <!-- Google Fonts -->
+        <link
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+      
+        <!-- Vendor CSS Files -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="icofont/icofont.min.css" rel="stylesheet">
+        <link href="boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="venobox/venobox.css" rel="stylesheet">
+        <link href="owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="aos/aos.css" rel="stylesheet">
+      
+        <!-- Template Main CSS File -->
+        <link href="style.css" rel="stylesheet">
+      
+    </head>
 
-    <h1>DegaMice </h1>
+<body>
+  
+    <h1>MegaDice Recreation </h1>
     <p>Recreation of Ontario's Lottery Game, MegaDice.</p>
 
     <p>> Functionality is complete. Frontend will be coming soon</p>
 
-    <button onClick="window.location.reload();"> Reroll </button>
+    <!--
+    <div class="container center">
+        
+        <div class="row center">
+            <div class="col-sm square">
+            <p id="numberOne"></p>
+            </div>
+            <div class="col-sm square">
+            <p id="numberTwo"></p>
+            </div>
+            <div class="col-sm square">
+            <p id="numberThree"></p>
+            </div>
+            <div class="col-sm square">
+            <p id="numberFour"></p>
+            </div>
+            <div class="col-sm square">
+            <p id="numberFive"></p>
+            </div>
+            <div class="col-sm square">
+            <p id="numberSix"></p>
+            </div>
+            <div class="col-sm square">
+            <p id="numberSeven"></p>
+            </div>
+        </div>
+    </div> 
 
-    <p id="displayWinningNumbers"></p>
+    <div class="container center">
+       <div class="container">
+        <div >
+          <div class="col columnDivider">
+            <p id="numberOne"></p>
+          </div>
+          <div class="col columnDivider">
+            <p id="numberTwo"></p>
+          </div>
+          <div class="col columnDivider">
+            <p id="numberThree"></p>
+          </div>
+          <div class="col columnDivider">
+            <p id="numberFour"></p>
+          </div>
+          <div class="col columnDivider">
+            <p id="numberFive"></p>
+          </div>
+          <div class="col columnDivider">
+            <p id="numberSix"></p>
+          </div>
+          <div class="col columnDivider">
+            <p id="numberSeven"></p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div id="flexbox" class="center">
+
+        <div>
+            <p id="numberOne"></p>
+        </div>
+        <div>
+            <p id="numberTwo"></p>
+        </div>
+        <div>
+            <p id="numberThree"></p>
+        </div>
+        <div>
+            <p id="numberFour"></p>
+        </div>
+        <div>
+            <p id="numberFive"></p>
+        </div>
+        <div>
+            <p id="numberSix"></p>
+        </div>
+        <div>
+            <p id="numberSeven"></p>
+        </div>
+    </div>
+
+    <p id="displayWinningNumbers" class="center"></p>
 
     <p id="IsJackpot"></p>
     <p id="Is7OAK"></p>
@@ -22,6 +131,8 @@
     <p id="Is32OAK"></p>
     <p id="straight"></p>
     <p id="loss"></p>
+
+    <button class="center" onClick="window.location.reload();"> Reroll </button>
 
     <!-- Debugging Duplicate Numbers
     <p id="COUNTONES"></p>
@@ -224,6 +335,14 @@
 
 
         document.getElementById("displayWinningNumbers").innerHTML = winningNums;
+        document.getElementById("numberOne").innerHTML = winningNums[0];
+        document.getElementById("numberTwo").innerHTML = winningNums[1];
+        document.getElementById("numberThree").innerHTML = winningNums[2];
+        document.getElementById("numberFour").innerHTML = winningNums[3];
+        document.getElementById("numberFive").innerHTML = winningNums[4];
+        document.getElementById("numberSix").innerHTML = winningNums[5];
+        document.getElementById("numberSeven").innerHTML = winningNums[6];
+
 
         /* Debugging duplicates
         document.getElementById("dupe3").innerHTML = "There are " + duplicatesOf3 + " duplicates of 3";
