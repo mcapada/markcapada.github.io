@@ -1,155 +1,279 @@
+"use strict";
 
-!(function($) {
-  "use strict";
+jQuery(document).on('ready', function () {
 
-  // Smooth scroll for the navigation menu and links with .scrollto classes
-  $(document).on('click', '.nav-menu a, .scrollto', function(e) {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      e.preventDefault();
-      var target = $(this.hash);
-      if (target.length) {
+    jQuery(window).on('scroll', function () {
+        animateElement();
+    });
 
-        var scrollto = target.offset().top;
+    //Add before and after "blockquote" custom class
+    jQuery('blockquote.inline-blockquote').prev('p').addClass('wrap-blockquote');
+    jQuery('blockquote.inline-blockquote').next('p').addClass('wrap-blockquote');
+    jQuery('blockquote.inline-blockquote').css('display', 'table');
 
-        $('html, body').animate({
-          scrollTop: scrollto
-        }, 1500, 'easeInOutExpo');
+    //Placeholder show/hide
+    jQuery('input, textarea').focus(function () {
+        jQuery(this).data('placeholder', jQuery(this).attr('placeholder'));
+        jQuery(this).attr('placeholder', '');
+    });
+    jQuery('input, textarea').blur(function () {
+        jQuery(this).attr('placeholder', jQuery(this).data('placeholder'));
+    });
 
-        if ($(this).parents('.nav-menu, .mobile-nav').length) {
-          $('.nav-menu .active, .mobile-nav .active').removeClass('active');
-          $(this).closest('li').addClass('active');
+
+    jQuery(".site-content").fitVids();
+
+    jQuery(".default-menu ul:first").addClass('sm sm-clean main-menu');
+});
+
+
+
+jQuery(window).on('load', function () {
+
+    //Set menu
+    jQuery('.main-menu').smartmenus({
+        subMenusSubOffsetX: 1,
+        subMenusSubOffsetY: -8,
+        markCurrentItem: true
+    });
+
+
+    var $mainMenu = jQuery('.main-menu').on('click', 'span.sub-arrow', function (e) {
+        var obj = $mainMenu.data('smartmenus');
+        if (obj.isCollapsible()) {
+            var $item = jQuery(this).parent(),
+                    $sub = $item.parent().dataSM('sub');
+            $sub.dataSM('arrowClicked', true);
+        }
+    }).bind({
+        'beforeshow.smapi': function (e, menu) {
+            var obj = $mainMenu.data('smartmenus');
+            if (obj.isCollapsible()) {
+                var $menu = jQuery(menu);
+                if (!$menu.dataSM('arrowClicked')) {
+                    return false;
+                }
+                $menu.removeDataSM('arrowClicked');
+            }
+        }
+    });
+
+
+
+//Show-Hide header sidebar
+    jQuery('#toggle, .menu-wraper').on('click', multiClickFunctionStop);
+    jQuery('.main-menu, .search-field').on('click', function (e) {
+        e.stopPropagation();
+    });
+
+    contactFormWidthFix();
+
+    jQuery('.grid-item').not('.hidden').addClass('loaded');
+
+    //Fix for portfolio/gallery item text
+    jQuery('.portfolio-text-holder').each(function () {
+        jQuery(this).find('.portfolio-info').css('margin-top', (jQuery(this).innerHeight() - jQuery(this).find('.portfolio-info').innerHeight()) * 0.5);
+    });
+    jQuery('.carousel-slider .slick-slide .item-text').each(function () {
+        jQuery(this).find('a').css('margin-top', (jQuery(this).innerHeight() - jQuery(this).find('a').innerHeight()) * 0.5);
+    });
+
+    //Image / Testimonial Slider Config
+    jQuery(".image-slider, .testimonial-slider").each(function () {
+        var id = jQuery(this).attr('id');
+
+        var auto_value = window[id + '_auto'];
+        var hover_pause = window[id + '_hover'];
+        var dots = window[id + '_dots'];
+        var speed_value = window[id + '_speed'];
+
+        auto_value = (auto_value === 'true') ? true : false;
+        hover_pause = (hover_pause === 'true') ? true : false;
+        dots = (dots === 'true') ? true : false;
+
+        jQuery('#' + id).slick({
+            arrows: false,
+            dots: dots,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            speed: 750,
+            autoplay: auto_value,
+            autoplaySpeed: speed_value,
+            pauseOnHover: hover_pause,
+            fade: true,
+            draggable: false,
+            adaptiveHeight: true
+        });
+    });
+
+
+    var g_speed_value = window['gallery_speed'];
+    var g_auto_value = window['gallery_auto'];
+    g_auto_value = (g_auto_value === 'true') ? true : false;
+
+    jQuery(".carousel-slider").slick({
+        arrows: true,
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        variableWidth: true,
+        speed: g_speed_value,
+        autoplaySpeed: g_speed_value,
+        autoplay: g_auto_value,
+        pauseOnHover: true
+    });
+
+    jQuery('.carousel-slider .slick-slide .item-text').each(function () {
+        jQuery(this).find('a').css('margin-top', (jQuery(this).innerHeight() - jQuery(this).find('a').innerHeight()) * 0.5);
+    });
+
+
+    portfolioLoadMore();
+
+    // Animate the elemnt if is allready visible on load
+    animateElement();
+
+    jQuery('.doc-loader').fadeOut('slow');
+
+});
+
+
+jQuery(window).on('resize', function () {
+
+    contactFormWidthFix();
+
+    //Fix for portfolio/gallery item text
+    jQuery('.portfolio-text-holder').each(function () {
+        jQuery(this).find('.portfolio-info').css('margin-top', (jQuery(this).innerHeight() - jQuery(this).find('.portfolio-info').innerHeight()) * 0.5);
+    });
+    jQuery('.carousel-slider .slick-slide .item-text').each(function () {
+        jQuery(this).find('a').css('margin-top', (jQuery(this).innerHeight() - jQuery(this).find('a').innerHeight()) * 0.5);
+    });
+});
+
+//------------------------------------------------------------------------
+//Helper Methods -->
+//------------------------------------------------------------------------
+
+
+var animateElement = function (e) {
+
+    jQuery(".animate").each(function (i) {
+
+        var top_of_object = jQuery(this).offset().top;
+        var bottom_of_window = jQuery(window).scrollTop() + jQuery(window).height();
+        if ((bottom_of_window) > top_of_object) {
+            jQuery(this).addClass('show-it');
         }
 
-        if ($('body').hasClass('mobile-nav-active')) {
-          $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
+    });
+
+};
+
+
+var contactFormWidthFix = function () {
+    jQuery('.wpcf7 input[type=text], .wpcf7 input[type=email], .wpcf7 textarea').innerWidth(jQuery('.wpcf7-form').width());
+};
+
+var multiClickFunctionStop = function (e) {
+    if (jQuery(e.target).is('.menu-wraper') || jQuery(e.target).is('.menu-right-part') || jQuery(e.target).is('.menu-holder') || jQuery(e.target).is('#toggle') || jQuery(e.target).is('#toggle div'))
+    {
+
+        jQuery('#toggle, .menu-wraper').off("click");
+        jQuery('#toggle').toggleClass("on");
+        if (jQuery('#toggle').hasClass("on"))
+        {
+            jQuery('.header-holder').addClass('down');
+            jQuery('.menu-wraper, .menu-holder').addClass('show');
+            jQuery('#toggle, .menu-wraper').on("click", multiClickFunctionStop);
+        } else
+        {
+            jQuery('.header-holder').removeClass('down');
+            jQuery('.menu-wraper, .menu-holder').removeClass('show');
+            jQuery('#toggle, .menu-wraper').on("click", multiClickFunctionStop);
         }
-        return false;
-      }
     }
-  });
+};
 
-  $(document).on('click', '.mobile-nav-toggle', function(e) {
-    $('body').toggleClass('mobile-nav-active');
-    $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
-  });
-
-  $(document).click(function(e) {
-    var container = $(".mobile-nav-toggle");
-    if (!container.is(e.target) && container.has(e.target).length === 0) {
-      if ($('body').hasClass('mobile-nav-active')) {
-        $('body').removeClass('mobile-nav-active');
-        $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
-      }
-    }
-  });
-
-  // Navigation active state on scroll
-  var nav_sections = $('section');
-  var main_nav = $('.nav-menu, #mobile-nav');
-
-  $(window).on('scroll', function() {
-    var cur_pos = $(this).scrollTop() + 10;
-
-    nav_sections.each(function() {
-      var top = $(this).offset().top,
-        bottom = top + $(this).outerHeight();
-
-      if (cur_pos >= top && cur_pos <= bottom) {
-        if (cur_pos <= bottom) {
-          main_nav.find('li').removeClass('active');
+var portfolioLoadMore = function (e) {
+    jQuery('.more-posts-portfolio').on("click", function () {        
+        jQuery('#portfolio').find(".hidden").slice(0,4).removeClass("hidden").addClass("animate loaded");
+        jQuery('.portfolio-text-holder').each(function () {
+            jQuery(this).find('.portfolio-info').css('margin-top', (jQuery(this).innerHeight() - jQuery(this).find('.portfolio-info').innerHeight()) * 0.5);
+        });                
+        animateElement();
+        if (!jQuery('#portfolio').find(".hidden").length)
+        {
+            jQuery('.more-posts-portfolio').hide();
         }
-        main_nav.find('a[href="#' + $(this).attr('id') + '"]').parent('li').addClass('active');
-      }
-      if (cur_pos < 200) {
-        $(".nav-menu ul:first li:first").addClass('active');
-      }
     });
-  });
+};
 
-  // Back to top button
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 100) {
-      $('.back-to-top').fadeIn('slow');
-    } else {
-      $('.back-to-top').fadeOut('slow');
+function isValidEmailAddress(emailAddress) {
+    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+    return pattern.test(emailAddress);
+}
+
+var SendMail = function () {
+
+    var emailVal = jQuery('#contact-email').val();
+
+    if (isValidEmailAddress(emailVal)) {
+        var params = {
+            'action': 'SendMessage',
+            'name': jQuery('#name').val(),
+            'email': jQuery('#contact-email').val(),
+            'subject': jQuery('#subject').val(),
+            'message': jQuery('#message').val()
+        };
+        jQuery.ajax({
+            type: "POST",
+            url: "php/sendMail.php",
+            data: params,
+            success: function (response) {
+                if (response) {
+                    var responseObj = jQuery.parseJSON(response);
+                    if (responseObj.ResponseData)
+                    {
+                        alert(responseObj.ResponseData);
+                    }
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                //xhr.status : 404, 303, 501...
+                var error = null;
+                switch (xhr.status)
+                {
+                    case "301":
+                        error = "Redirection Error!";
+                        break;
+                    case "307":
+                        error = "Error, temporary server redirection!";
+                        break;
+                    case "400":
+                        error = "Bad request!";
+                        break;
+                    case "404":
+                        error = "Page not found!";
+                        break;
+                    case "500":
+                        error = "Server is currently unavailable!";
+                        break;
+                    default:
+                        error = "Unespected error, please try again later.";
+                }
+                if (error) {
+                    alert(error);
+                }
+            }
+        });
+    } else
+    {
+        alert('Your email is not in valid format');
     }
-  });
+};
 
-  $('.back-to-top').click(function() {
-    $('html, body').animate({
-      scrollTop: 0
-    }, 1500, 'easeInOutExpo');
-    return false;
-  });
-
-  // jQuery counterUp
-  $('[data-toggle="counter-up"]').counterUp({
-    delay: 10,
-    time: 1000
-  });
-
-  // Skills section
-  $('.skills-content').waypoint(function() {
-    $('.progress .progress-bar').each(function() {
-      $(this).css("width", $(this).attr("aria-valuenow") + '%');
-    });
-  }, {
-    offset: '80%'
-  });
-
-  // Porfolio isotope and filter
-  $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
-    });
-
-    $('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-
-      portfolioIsotope.isotope({
-        filter: $(this).data('filter')
-      });
-    });
-
-    // Initiate venobox (lightbox feature used in portofilo)
-    $(document).ready(function() {
-      $('.venobox').venobox();
-    });
-  });
-
-  // Testimonials carousel (uses the Owl Carousel library)
-  $(".testimonials-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      768: {
-        items: 2
-      },
-      900: {
-        items: 3
-      }
-    }
-  });
-
-  // Portfolio details carousel
-  $(".portfolio-details-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    items: 1
-  });
-
-  // Initi AOS
-  AOS.init({
-    duration: 1000,
-    easing: "ease-in-out-back"
-  });
-
-})(jQuery);
+function is_touch_device() {
+    return !!('ontouchstart' in window);
+}
