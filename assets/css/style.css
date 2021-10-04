@@ -1,26 +1,3 @@
-/*------------------------------------------------------------------
-[Table of contents]
-1. Global CSS
-        1.1 Global Header Logo/Menu CSS	
-2. Blog Page CSS
-3. General Page CSS
-4. About Page CSS
-5. Single Post CSS
-6. Archive Page CSS
-7. Search Page CSS
-8. Portfolio (Home) Page CSS
-        8.1 Portfolio Single Post CSS
-9. Gallery Page CSS
-        9.1 Gallery Single Post CSS
-10. Contact Page CSS
-11. Footer CSS
-12. Responsive CSS
--------------------------------------------------------------------*/
-
-
-/* ===================================
-    1. Global CSS
-====================================== */
 .border {
     border: 1px solid rgba(158, 158, 158, 0.397);
 }
@@ -39,8 +16,8 @@ body
     font-size: 17px; 	
     line-height: 35px;
     font-weight: 400;	
-    color: #000;
-    background-color: #fff;
+    color: #ffffff;
+    background-color: #121212;
 }
 
 body a
@@ -57,7 +34,7 @@ body a:hover
 
 ::selection 
 {
-    background-color: #fae3b5;
+    background-color: #392B03;
 }
 
 .body-wrapper
@@ -67,6 +44,7 @@ body a:hover
     position: relative;
 }
 
+/* Sets the fade-in */
 .doc-loader 
 {
     position: fixed;
@@ -75,7 +53,7 @@ body a:hover
     width: 100%;
     height: 100%;
     z-index: 99999;	
-    background-color: #fff;
+    background-color: #121212;
 }
 
 .animate
@@ -187,7 +165,7 @@ body a:hover
 {
     height: 3px;
     margin-bottom: 6px;
-    background-color: #000;
+    background-color: #ffffff;
 }
 
 #toggle .second-menu-line
@@ -734,7 +712,7 @@ body a:hover
 
 .page .site-content
 {
-    color: #4b4b4b;
+    color: #9c9c9c;
 }
 
 .page h1.entry-title
@@ -1089,7 +1067,7 @@ body a:hover
 
 
 /* ===================================
-    8. Portfolio (Home) Page CSS
+    8. Index Page CSS
 ====================================== */
 
 .header-content
@@ -1115,7 +1093,7 @@ body a:hover
     content: "\201C";
     font-size: 470px;
     line-height: 100%;
-    color: #fae3b5;
+    color: #9c8e70;
     margin-bottom: -346px;
     margin-top: -50px;
 }
@@ -1245,7 +1223,7 @@ body a:hover
     cursor: pointer;
     border-bottom: 2px solid;
     padding: 10px 30px;
-    color: #000 !important;
+    color:rgba(255, 255, 255, 0.548);
 }
 
 .more-posts-portfolio:before 
@@ -1365,6 +1343,15 @@ body a:hover
     transform: translate(10px);
 }
 
+.white 
+{
+color:white;
+}
+
+.boldwhite 
+{
+color:rgba(255, 255, 255, 0.774);
+}
 
 /* ===================================
     9. Gallery Page CSS
@@ -1636,14 +1623,14 @@ footer ul
     margin-top: 70px;
     padding-bottom: 110px;
     clear: both;
-    color: #fff;
+    color:rgba(255, 255, 255, 0.719);
     text-align: center;
     background: #000;
 }
 
 .footer a
 {
-    color: #fff;
+    color:rgba(255, 255, 255, 0.493);
 }
 
 .footer-logo 
