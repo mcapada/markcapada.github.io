@@ -1,0 +1,485 @@
+$version: "1.0.0";
+
+/* ------------------------------------------------
+ Author: ArtStyles (Art)
+ 
+ Template Name: 
+ version: #{$version}
+------------------------------------------------ */
+
+//@import '_color.scss';
+@import 'variables/vars';
+@import 'variables/mixins';
+@import 'variables/media';
+
+
+/* -----------------------------------------------------------------
+    - Typography
+----------------------------------------------------------------- */
+
+.title { 
+  &-icon {
+	  margin-right: 0;
+    margin-left: rem(8px);
+  }
+
+  &__separate::before {
+	  @include position(absolute, $right: 0, $left: auto, $bottom: rem(-17px));
+  }
+}
+
+.block-quote {
+  @media only screen and (max-width: $large) {
+    padding-right: rem(61px);
+    padding-left: 0;
+  }  
+  
+  @media only screen and (max-width: $small) {
+	  padding-right: 0;
+  }
+  
+  &::before {
+	  @include position(absolute, $top: rem(8px), $right: rem(-50px), $left: auto);
+	
+	  @media only screen and (max-width: $large) {
+      left: auto;
+      right: 0;
+	  }
+  }
+  
+  &__author {
+    padding-right: rem(48px);
+	  padding-left: 0;
+	
+	  @media only screen and (max-width: $small) {
+	    padding-right: rem(32px);
+	    padding-left: 0;
+	  }
+	
+	  &::before {
+	    @include position(absolute, $top: 0, $right: 0, $left: auto, $bottom: 0);
+	  }
+  }
+}
+
+
+/* -----------------------------------------------------------------
+    - Form
+----------------------------------------------------------------- */
+
+.input {
+  text-align: right;
+}
+
+// Input Text
+.help-block {
+  padding-right: rem(6px);
+  padding-left: 0;
+}
+
+// Dropdown
+.dropdown {
+  &-menu::before {
+	  @include position(absolute, $top: rem(-6px), $right: rem(17px), $left: rem(0));
+  }
+}
+
+
+// Button
+.btn {
+  .font-icon {
+    margin-right: 0;
+    margin-left: rem(6px);
+  }
+
+  &--icon-left i {
+    margin-right: 0;
+    margin-left: rem(8px);
+  }
+
+  &--icon-right i {
+    margin-right: rem(8px);
+    margin-left: 0;
+  }
+}
+
+
+/* -----------------------------------------------------------------
+    - Sidebar
+----------------------------------------------------------------- */
+
+.sidebar {
+  .avatar-box {
+    @media only screen and (max-width: $large-xl) {
+      margin: 0 0 0 rem(24px);
+    }
+
+    @media only screen and (max-width: $small) {
+      margin: 0 0 0 rem(16px);
+    }
+  } 
+  
+  &__btn {
+    @include position(absolute, $top: 0, $right: auto, $left: 0);
+    border-top-left-radius: var(--radius-14);
+    border-bottom-right-radius: var(--radius-14);
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  @media only screen and (max-width: $small) {
+    &__btn i {
+      margin: 0;
+    }
+  }
+}
+
+/* Social */
+.social {
+  @media only screen and (max-width: $large-xl) {
+    text-align: right;
+  }
+}
+
+
+/* -----------------------------------------------------------------
+    - Sections
+----------------------------------------------------------------- */
+
+.icon-box {
+  margin-right: 0;
+  margin-left: rem(16px);
+}
+
+.noGutters {
+  &-Left {
+    margin-right: 0!important;
+    margin-right: inherit!important;
+  }
+  &-Right {
+    margin-right: inherit!important;
+    margin-left: 0!important;
+  }
+}
+
+/* Details info */
+.details-info {
+  padding-right: 0;
+  padding-left: auto;
+  
+  &--inline .details-info__item {
+    margin-right: 0;
+    margin-left: rem(80px);
+
+    &:last-child {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+}
+
+
+/* -----------------------------------------------------------------
+    - Navbar
+----------------------------------------------------------------- */
+
+// Nav
+.nav-container {
+  border-radius: var(--radius-20) 0 var(--radius-20) 0;
+  @include position(absolute, $top: 0, $left: 0, $right: auto);
+
+  @media only screen and (max-width: $large) {
+    @include position(fixed, $top: auto, $left: 0, $bottom: 0);
+  }
+}
+
+.nav {
+  &__item {
+    margin-right: 0;
+    margin-left: rem(44px);
+	
+  	@media only screen and (max-width: $large) {
+	    margin-right: 0;
+      margin-left: rem(32px);
+  	}
+	
+	  @media only screen and (max-width: $small) {
+	    margin-right: 0;
+      margin-left: rem(20px);
+	  }
+  }
+	
+  &__item:last-child {
+	  margin-left: 0;
+  }  
+}
+
+
+/* -----------------------------------------------------------------
+    - Popup
+----------------------------------------------------------------- */
+
+.mfp-content {
+  text-align: right;
+}
+
+.mfp-close {
+  right: auto;
+  left: rem(15px);
+
+  &:focus {
+    right: auto;
+    left: rem(15px);
+  }
+}
+
+
+/* -----------------------------------------------------------------
+    - Cases
+----------------------------------------------------------------- */
+
+.case-item__icon {
+	margin-right: 0;
+	margin-left: rem(16px);
+
+	@media only screen and (max-width: $small) {
+	  margin-left: 0;
+  }
+}
+
+
+/* -----------------------------------------------------------------
+    - Portfolio
+----------------------------------------------------------------- */
+
+// Filter
+@media only screen and (min-width: 769px) {
+  .filter {
+    &__item {
+      padding-right: 0;
+	    padding-left: rem(19px);
+	
+	    &:last-child {
+	      padding-left: 0;
+	    }
+    }
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .select {
+    .placeholder {
+      text-align: right;
+    }
+    
+    .placeholder:after {
+	    @include position(absolute, $top: 50%, $right: auto, $left: rem(2px));
+    }
+
+    ul li {
+      text-align: right;
+    }
+  }
+}
+
+
+/* -----------------------------------------------------------------
+    - News
+----------------------------------------------------------------- */ 
+
+.news-item__date {
+  span {
+    padding-right: 0;
+    padding-left: rem(18px);
+  }
+    
+  span::after {
+    @include position(absolute, $top: 0, $bottom: 0, $right: auto, $left: #{rem(7px)});
+  }
+}
+
+
+/* -----------------------------------------------------------------
+    - Single post
+----------------------------------------------------------------- */ 
+
+.footer-post__share {
+	.font-icon {
+	  margin-right: 0;
+    margin-left: rem(11px);
+	}
+}
+
+// Comments
+.comment-box {
+  & & {
+    margin-right: rem(48px);
+    margin-left: 0;
+    
+    @media only screen and (max-width: $small) {
+      margin-right: rem(19px);
+      margin-left: 0;
+    }
+  }
+
+  &__body {
+    padding-right: rem(16px);
+	  padding-left: 0;
+	
+	  @media only screen and (max-width: $small) {
+	    padding-right: 0;
+	  }
+  }
+  
+  .avatar {
+    margin-right: 0;
+    margin-left: rem(16px);
+  }
+  
+  &__footer li {
+	  margin-right: 0;
+	  margin-left: rem(32px);
+
+	  @media only screen and (max-width: $small) {
+	    margin-right: 0;
+      margin-left: rem(16px);
+	  }
+	  
+	  &:last-child {
+	  	margin-left: 0;
+    }	  
+	}
+}
+
+// Comment form
+.comment-form {
+  .btn-submit {
+    right: auto;
+    left: 0;
+	  margin-right: 0;
+    margin-left: rem(12px);
+
+	  @media only screen and (max-width: $small) {
+	  	margin-right: 0;
+      margin-left: rem(10px);
+	  }
+  }
+  
+  .dropdown {
+    margin-right: rem(12px);
+	  margin-left: rem(0);
+	
+  	&-menu {
+      margin-right: rem(-16px);
+	    margin-left: 0;
+
+	    &::before {
+	    	@include position(absolute, $right: rem(16px), $left: auto, $bottom: rem(-6px));
+	    }
+  	}
+
+	  @media only screen and (max-width: $small) {
+      margin-right: rem(10px);
+	  	margin-left: 0;
+	  }
+  }
+}
+
+// Social auth
+.social-auth__item {
+  margin-right: 0;
+  margin-left: rem(6px);
+}
+
+
+/* -----------------------------------------------------------------
+    - Single project
+----------------------------------------------------------------- */ 
+
+.header-project .title {
+	@include position(absolute, $bottom: 0, $right: 0, $left: auto);
+}
+
+
+/* -----------------------------------------------------------------
+    - Testimonials
+----------------------------------------------------------------- */
+
+$size-avatar: rem(80px);
+
+.review-item {
+  &::before {
+    background-position: 0 0, left rem(30px) top rem(24px);
+  }
+
+  @media only screen and (max-width: $small) {
+    &::before {
+      background-position: 0 0, left rem(15px) top rem(15px);
+    }
+  }
+  
+  .title {
+    margin-right: calc(#{$size-avatar} + #{rem(15px)});
+    margin-left: 0;
+
+	  @media only screen and (max-width: $small) {
+      margin-right: 0;
+	  }
+  }
+}
+
+
+/* -----------------------------------------------------------------
+    - Timeline
+----------------------------------------------------------------- */
+
+.timeline {
+  padding-right: rem(24px);
+  padding-left: 0;
+
+  &::before {
+    border-right-color: var(--color-border);
+  	border-right-width: 1px;
+	  border-right-style: solid;
+  	border-left-width: 0;
+  }
+  
+  @media only screen and (max-width: $small) {
+    padding-right: rem(14.5px);
+	  padding-left: 0;
+  }
+
+  &__item {
+    border-right-color: var(--color-border);
+	  border-right-width: 1px;
+  	border-right-style: solid;
+	  border-left-width: 0;
+    padding-right: rem(40px);
+    padding-left: 0;
+
+  	&::before {
+	    @include position(absolute, $top: rem(1px), $right: rem(-5px), $left: 0);
+	  }
+
+  	@media only screen and (max-width: $small) {
+      padding-right: rem(30px);
+		  padding-left: 0;
+
+	  	&::before {
+        right: rem(-3.5px);
+		    left: 0;
+		  }
+	  }
+  }
+}
+
+
+/* -----------------------------------------------------------------
+    - Other
+----------------------------------------------------------------- */ 
+
+// Bact to top
+.back-to-top {
+  left: 40px;
+  right: auto;
+}
